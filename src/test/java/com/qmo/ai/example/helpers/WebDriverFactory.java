@@ -1,18 +1,19 @@
 package com.qmo.ai.example.helpers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverFactory {
 
-    private static ThreadLocal<ChromeDriver> driver = new ThreadLocal<ChromeDriver>();
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
     public static  void setDriver() {
         WebDriverManager.chromedriver().setup();
         driver.set(new ChromeDriver());
     }
 
-    public static ChromeDriver getDriver()
+    public static WebDriver getDriver()
     {
         return driver.get();
     }
