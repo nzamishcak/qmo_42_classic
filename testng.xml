@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" thread-count="2" parallel="classes">
+    <test verbose="2" preserve-order="true" name="/Users/nzami/IdeaProjects/qmo_42_classic/testng.xml" thread-count="2" parallel="classes">
+        <classes>
+            <class name="com.qmo.ai.example.Test1"></class>
+            <class name="com.qmo.ai.example.Test2"></class>
+            <class name="com.qmo.ai.example.Test3"></class>
+        </classes>
+    </test>
+</suite>
