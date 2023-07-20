@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.components.ChatInfoBanner;
+import utils.components.HamburgerMenuPopUp;
 
 public class HomePage extends BasePage {
     WebDriver driver;
@@ -13,12 +15,16 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         this.driver=driver;
+        waitUntilElementIsVisible(driver, bingLogo, 5);
     }
 
     // Locators for the page
+    By bingLogo = By.xpath("//h1[@class='logo_cont']");
     By pageTitle = By.xpath("//title[text()='Bing']");
     By searchField = By.xpath("//textarea[@type='search']");
     By searchIcon = By.xpath("//*[@id='search_icon']");
+    By chatMenuItem = By.xpath(".//a[.//div[@class='text' and text()='Chat']]");
+    By hamburgerMenuButton = By.xpath("//a[@class='idp_ham hphbtop' and @role='button']");
 
 
     // Methods to interact with page elements
@@ -42,7 +48,7 @@ public class HomePage extends BasePage {
         searchField.clear();
         searchField.click();
         searchField.sendKeys(text);
-        logger.info("Enter in Home Page - Search Icon text: {}", text);
+        logger.info("Enter in Home Page - Search Field text: '{}'", text);
     }
 
     public SearchResultPage clickSearchIcon(){
@@ -52,6 +58,27 @@ public class HomePage extends BasePage {
         return new SearchResultPage(driver);
     }
 
+    public WebElement getChatMenuItem(){
+        logger.info("Return Home Page - Top menu - Chat Item");
+        return driver.findElement(chatMenuItem);
+    }
 
+    public ChatInfoBanner clickChatMenuItem(){
+        logger.info("Click Home Page - Top menu - Chat Item");
+        getChatMenuItem().click();
+        return new ChatInfoBanner(driver);
+    }
+
+    public WebElement getHamburgerMenuButton(){
+        logger.info("Return Home Page - Top Hamburgaer Menu Button");
+        waitUntilElementIsVisible(driver, hamburgerMenuButton, 5);
+        return driver.findElement(hamburgerMenuButton);
+    }
+
+    public HamburgerMenuPopUp clickHamburgerMenuButton(){
+        logger.info("Click on Home Page - Top Hamburgaer Menu Button");
+        getHamburgerMenuButton().click();
+        return new HamburgerMenuPopUp(driver);
+    }
 
 }
