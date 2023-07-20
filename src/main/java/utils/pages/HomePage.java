@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
     // Locators for the page
     By pageTitle = By.xpath("//title[text()='Bing']");
     By searchField = By.xpath("//textarea[@type='search']");
-    By searchIcon = By.xpath("//*[@id='search_icon']//*[name()='svg']");
+    By searchIcon = By.xpath("//*[@id='search_icon']");
 
 
     // Methods to interact with page elements
@@ -47,7 +47,8 @@ public class HomePage extends BasePage {
 
     public SearchResultPage clickSearchIcon(){
         logger.info("Click Home Page - Search Icon");
-        getSearchIcon().click();
+        //getSearchIcon().click();
+        getSearchIcon().submit();
         return new SearchResultPage(driver);
     }
 

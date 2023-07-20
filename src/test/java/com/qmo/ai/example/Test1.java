@@ -40,7 +40,7 @@ public class Test1 {
         searchResultPage = homePage.clickSearchIcon();
 
         //The search results should contain information about the weather in Lviv.
-        String pageTitle = searchResultPage.getPageTitle().getText();
+        String pageTitle = searchResultPage.getPageTitle().getAttribute("text");
         Assert.assertTrue(pageTitle.contains(SEARCH_PHRASE));
         Assert.assertEquals(searchResultPage.getSearchField().getAttribute(ATTRIBUTE_VALUE), SEARCH_PHRASE);
 

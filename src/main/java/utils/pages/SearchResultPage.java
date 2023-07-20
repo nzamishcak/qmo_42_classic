@@ -12,12 +12,13 @@ public class SearchResultPage extends BasePage {
 
     public SearchResultPage(WebDriver driver) {
         this.driver=driver;
-        waitUntilElementIsVisible(driver, pageTitle, 5);
+        waitUntilElementIsVisible(driver, backToHomeLogo, 5);
     }
 
     // Locators for the page
     By pageTitle = By.xpath("//title[contains(text(), ' - Search')]");
     By searchField = By.xpath("//div[@role='search']//input[@type='search']");
+    By backToHomeLogo = By.xpath("//h1[@title='Back to Bing search']");
 
 
     // Methods to interact with page elements
